@@ -14,6 +14,20 @@ const SignupForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+  fetch('/api/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Handle the response from the backend
+    })
+    .catch((error) => {
+      // Handle any errors
+    });
     // Perform client-side validation
     if (!name || !email || !password || !confirmPassword) {
       setError('Please fill in all fields.');
